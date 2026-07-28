@@ -1,8 +1,8 @@
 package entities;
 
 public class Dipendente {
-    private String matricola;
-    private double stipendio;
+    private final String matricola;
+    private final double stipendio;
     private Dipartimento dipartimento;
 
     public enum Dipartimento {
