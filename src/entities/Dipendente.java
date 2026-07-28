@@ -30,12 +30,16 @@ public class Dipendente {
         this.dipartimento = dipartimento;
     }
 
+    public double calcolaStipendio() {
+        return this.stipendio;
+    }
+
     @Override
     public String toString() {
         return "Dipendente{" +
-                "matricola='" + matricola + '\'' +
-                ", stipendio=" + stipendio +
-                ", dipartimento=" + dipartimento +
+                "matricola='" + this.matricola + '\'' +
+                ", stipendio=" + this.stipendio +
+                ", dipartimento=" + this.dipartimento +
                 '}';
     }
 }
