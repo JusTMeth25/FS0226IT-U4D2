@@ -1,6 +1,7 @@
 package entities;
+import interfaces.CheckIn;
 
-public class Dipendente {
+public abstract class Dipendente implements CheckIn {
     private final String matricola;
     private final double stipendio;
     private Dipartimento dipartimento;
@@ -30,9 +31,7 @@ public class Dipendente {
         this.dipartimento = dipartimento;
     }
 
-    public double calcolaStipendio() {
-        return this.stipendio;
-    }
+    public abstract double calcolaStipendio();
 
     @Override
     public String toString() {
@@ -41,6 +40,11 @@ public class Dipendente {
                 ", stipendio=" + this.stipendio +
                 ", dipartimento=" + this.dipartimento +
                 '}';
+    }
+
+    @Override
+    public void checkIn() {
+        System.out.println("Il dipendente: " + getMatricola() + " " + "inizia il turno alle ore: 08.00");
     }
 }
 
