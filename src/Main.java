@@ -3,6 +3,7 @@ import entities.DipendenteFullTime;
 import entities.DipendentePartTime;
 import entities.Dirigente;
 import entities.Volontario;
+import exceptions.DatiDipendenteNonValidiException;
 import interfaces.CheckIn;
 
 
@@ -27,21 +28,35 @@ public class Main {
 //        System.out.println("Calcolo stipendio di un dipendente part-time: " + dipendente5.calcolaStipendio());
 //        System.out.println("Calcolo stipendio di un dirigente: " + dirigente.calcolaStipendio());
 
-        Dipendente [] dipendenti = {new DipendenteFullTime("088355", 34000, Dipendente.Dipartimento.VENDITE, 10), new DipendentePartTime("088255", 55000, Dipendente.Dipartimento.AMMINISTRAZIONE, 500, 175.5), new Dirigente("00100", 340000, Dipendente.Dipartimento.AMMINISTRAZIONE, 200)};
+        Dipendente[] dipendenti = {new DipendenteFullTime("088355", 34000, Dipendente.Dipartimento.VENDITE, 10), new DipendentePartTime("088255", 55000, Dipendente.Dipartimento.AMMINISTRAZIONE, 500, 175.5), new Dirigente("00100", 340000, Dipendente.Dipartimento.AMMINISTRAZIONE, 200)};
 
         double totale = 0;
-        for (Dipendente dipendente: dipendenti) {
+        for (Dipendente dipendente : dipendenti) {
             System.out.println(dipendente.getMatricola());
             System.out.println(dipendente.calcolaStipendio());
-           totale = totale + dipendente.calcolaStipendio();
+            totale = totale + dipendente.calcolaStipendio();
         }
 
         System.out.println("Totale degli stipendi di tutti i dipendenti e': " + totale);
 
-        CheckIn [] checkIns = {new DipendenteFullTime("02333", 19000, Dipendente.Dipartimento.VENDITE, 2), new DipendentePartTime("01223", 21000, Dipendente.Dipartimento.PRODUZIONE, 230, 200), new Dirigente("1111", 89000, Dipendente.Dipartimento.AMMINISTRAZIONE, 25), new Volontario("Mario", 25, "FullStack Coder") };
+        CheckIn[] checkIns = {new DipendenteFullTime("02333", 19000, Dipendente.Dipartimento.VENDITE, 2), new DipendentePartTime("01223", 21000, Dipendente.Dipartimento.PRODUZIONE, 230, 200), new Dirigente("1111", 89000, Dipendente.Dipartimento.AMMINISTRAZIONE, 25), new Volontario("Mario", 25, "FullStack Coder")};
 
-        for (CheckIn checkIn: checkIns ) {
-           checkIn.checkIn();
+        for (CheckIn checkIn : checkIns) {
+            checkIn.checkIn();
+        }
+
+
+        System.out.println("***********Exceptions**************");
+        try {
+            new Dirigente("null", 0, Dipendente.Dipartimento.AMMINISTRAZIONE, 200);
+        } catch (DatiDipendenteNonValidiException ex) {
+            System.out.println(ex.getMessage());
+        }
+        try {
+            new Dirigente("111", 500.000, Dipendente.Dipartimento.AMMINISTRAZIONE, 1000);
+        } catch
+        (DatiDipendenteNonValidiException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 }
