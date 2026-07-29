@@ -24,7 +24,7 @@ public abstract class Dipendente implements CheckIn {
     }
 
     public Dipendente(String matricola, double stipendio, Dipartimento dipartimento) {
-        if (stipendio <= 0 || matricola == null || matricola == " ") throw new DatiDipendenteNonValidiException("Ehhh voleeeevi!!");
+        if (stipendio <= 0 || matricola == null || matricola.isBlank()) throw new DatiDipendenteNonValidiException("Ehhh voleeeevi!!");
         this.matricola = matricola;
         this.stipendio = stipendio;
         this.dipartimento = dipartimento;

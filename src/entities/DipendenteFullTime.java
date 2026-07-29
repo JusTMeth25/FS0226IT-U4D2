@@ -7,7 +7,6 @@ public class DipendenteFullTime extends Dipendente {
 
     public DipendenteFullTime(String matricola, double stipendio, Dipartimento dipartimento, int anniAnzianita) {
         super(matricola, stipendio, dipartimento);
-        if (stipendio <= 0 || matricola == null || matricola == " ") throw new DatiDipendenteNonValidiException("Ehhh voleeeevi!!");
         this.anniAnzianita = anniAnzianita;
     }
 
